@@ -244,15 +244,12 @@ class lanenet_detector():
         #2. Combine the outputs
         ## Here you can use as many methods as you want.
 
-        ## TODO
         SobelOutput = self.gradient_thresh(img=img)
         ColorOutput = self.color_thresh(img=img)
-        ####
 
         binaryImage = np.zeros_like(SobelOutput)
         binaryImage[(ColorOutput==1)|(SobelOutput==1)] = 1
         # Remove noise from binary image
-        # binaryImage = morphology.remove_small_objects(binaryImage.astype('bool'),min_size=50,connectivity=2)
         ColorOutput = morphology.remove_small_objects(ColorOutput.astype('bool'),min_size=50,connectivity=2)
 
 
@@ -312,18 +309,6 @@ class lanenet_detector():
         return start_x, start_y, point_x, point_y
     
     def front2steer(self, f_angle):
-        # if(f_angle > 90):
-        #     f_angle = 90
-        # if (f_angle < -90):
-        #     f_angle = -90
-        # if (f_angle > 0):
-        #     steer_angle = round(-0.1084*f_angle**2 + 21.775*f_angle, 2)
-        # elif (f_angle < 0):
-        #     f_angle = -f_angle
-        #     steer_angle = -round(-0.1084*f_angle**2 + 21.775*f_angle, 2)
-        # else:
-        #     steer_angle = 0.0
-        # return steer_angle
         f_deg = f_angle * 180 / math.pi
         if f_deg < -50:
             return -3.5 * math.pi
@@ -373,29 +358,6 @@ class lanenet_detector():
         show_seg_result(im0, (da_seg_mask,ll_seg_mask), is_demo=True)
 
         return im0, 1.0
-    
-    # def color_thresh_red(self, img):
-    #     # Convert the image to HLS color space
-    #     hls = cv2.cvtColor(img, cv2.COLOR_BGR2HLS)
-
-    #     # Define red thresholds in HLS
-    #     lower_red1 = np.array([0, 50, 50])
-    #     upper_red1 = np.array([10, 255, 255])
-    #     lower_red2 = np.array([170, 50, 50])
-    #     upper_red2 = np.array([180, 255, 255])
-
-    #     # Create masks for both red ranges and combine them
-    #     mask1 = cv2.inRange(hls, lower_red1, upper_red1)
-    #     mask2 = cv2.inRange(hls, lower_red2, upper_red2)
-    #     mask = cv2.bitwise_or(mask1, mask2)
-
-    #     # Apply the mask to get the filtered image
-    #     filt_img = cv2.bitwise_and(img, img, mask=mask)
-
-    #     # Convert to grayscale and normalize to binary output
-    #     binary_output = cv2.cvtColor(filt_img, cv2.COLOR_BGR2GRAY)
-
-    #     return binary_output / 255
 
     def color_thresh_red(self, img):
         # Define the BGR range for detecting red, with a small margin for tolerance
@@ -417,80 +379,6 @@ class lanenet_detector():
 
 
     def detection(self, img):
-        # cv2.imwrite('../img/output_image_' + str(self.count) + '.png', img)
-
-        # binary_img = self.combinedBinaryImage(img)
-
-        # # cv2.imwrite('../binary/output_image_'+ str(self.count) +'.png', binary_img.astype(np.uint8) * 255)
-
-        # img_birdeye, M, Minv = self.perspective_transform(binary_img)
-        
-        # # cv2.imwrite('../image_top/output_image_'+ str(self.count) +'.png', img_birdeye * 255)
-        # self.count += 1
-
-        # if not self.hist:
-        #     # Fit lanvehicle_drivers/gem_gnss_control/scripts/lane/test6.pnge without previous result
-        #     ret = line_fit(img_birdeye)
-        #     left_fit = ret['left_fit']
-        #     right_fit = ret['right_fit']
-        #     nonzerox = ret['nonzerox']
-        #     nonzeroy = ret['nonzeroy']
-        #     left_lane_inds = ret['left_lane_inds']
-        #     right_lane_inds = ret['right_lane_inds']
-        # else:
-        #     # Fit lane with previous result
-        #     # if not self.detected:
-        #     ret = line_fit(img_birdeye)
-
-        #     if ret is not None:
-        #         left_fit = ret['left_fit']
-        #         right_fit = ret['right_fit']
-        #         nonzerox = ret['nonzerox']
-        #         nonzeroy = ret['nonzeroy']
-        #         left_lane_inds = ret['left_lane_inds']
-        #         right_lane_inds = ret['right_lane_inds']
-
-        #         left_fit = self.left_line.add_fit(left_fit)
-        #         right_fit = self.right_line.add_fit(right_fit)
-
-        #         self.detected = True
-
-        #     # Annotate original image
-        #     bird_fit_img = None
-        #     combine_fit_img = None
-        #     if ret is not None:
-        #         bird_fit_img = bird_fit(img_birdeye, ret, save_file=None)
-        #         combine_fit_img = final_viz(img, left_fit, right_fit, Minv)
-        #     # else:
-        #         # print("Unable to detect lanes")
-
-        #     actual_heading = get_actual_heading()
-
-        #     # Steering angle request publishing
-        #     if actual_heading == 4:                     # hard left turn
-        #         self.steer_rqst.angular_position = min(self.steer_rqst.angular_position + ANGLE_STEP_MEDIUM, MAX_ANGLE_REG)
-        #         self.steer_rqst.angular_velocity_limit = MIN_ANGLE_VEL
-        #     if actual_heading == 3:                     # slight left turn
-        #         self.steer_rqst.angular_position = min(self.steer_rqst.angular_position + ANGLE_STEP_SMALL, MAX_ANGLE_SLIGHT)
-        #         self.steer_rqst.angular_velocity_limit = MIN_ANGLE_VEL
-        #     elif actual_heading == 0:                   # hard right turn
-        #         self.steer_rqst.angular_position = max(self.steer_rqst.angular_position - ANGLE_STEP_MEDIUM, MIN_ANGLE_REG)
-        #         self.steer_rqst.angular_velocity_limit = MIN_ANGLE_VEL
-        #     elif actual_heading == 1:                   # slight right turn
-        #         self.steer_rqst.angular_position = max(self.steer_rqst.angular_position - ANGLE_STEP_SMALL, MIN_ANGLE_SLIGHT)
-        #         self.steer_rqst.angular_velocity_limit = MIN_ANGLE_VEL
-        #     elif actual_heading == 2:                   # straight
-        #         self.steer_rqst.angular_velocity_limit = MAX_ANGLE_VEL
-        #         if self.steer_rqst.angular_position > 0:
-        #             self.steer_rqst.angular_position = max(self.steer_rqst.angular_position - ANGLE_STEP_LARGE, 0.0)
-        #         elif self.steer_rqst.angular_position < 0:
-        #             self.steer_rqst.angular_position = min(self.steer_rqst.angular_position + ANGLE_STEP_LARGE, 0.0)
-        #         else:
-        #             self.steer_rqst.angular_position = 0.0
-                    
-        #     self.steer_rqst_pub.publish(self.steer_rqst)
-
-        #     return combine_fit_img, bird_fit_img
 
         lab_image = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
 
@@ -535,8 +423,6 @@ class lanenet_detector():
 
         self.steer_rqst.angular_position = steering_angle
 
-        # print(f"Steering angle request: {steering_angle * 180 / np.pi:.2f} degrees")
-
         self.steer_rqst_pub.publish(self.steer_rqst)
 
         points = np.array([top_left, bottom_left, bottom_right, top_right], dtype=np.int32)
@@ -545,7 +431,6 @@ class lanenet_detector():
 
         return bgr_warped, yolo_lane_img
         
-
 
 if __name__ == '__main__':
     # init args

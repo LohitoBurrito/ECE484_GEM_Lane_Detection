@@ -11,7 +11,7 @@ This is a project in which we test out a pipeline which we run using ROS on a GE
 Below shows an image of the pipeline we use to processing our ZED2 Camera output. Once processed, we calculate an approximate steering angle for which the car should turn. 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/0b335561-5c45-45ab-98ec-646e10a44860" alt="drawing" width="800"/>
+  <img src="https://github.com/user-attachments/assets/0b335561-5c45-45ab-98ec-646e10a44860" alt="drawing" width="600"/>
 </p>
 
 #### Ⓐ Bilateral Filter
@@ -22,7 +22,7 @@ The Bilateral Filter acts just like a gaussian filter which is neat for testing 
 The blurred output of the Bilateral Filter is then sent into a YoloPV2 model which performs pedestrian and lane detection. Below shows an example output image of the YoloPV2 model which we captured. Note that the image is blurred which was the results of the previous bilateral filter.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/5047e8aa-7db9-4849-8b52-eca8ccda0209" alt="drawing" width="600"/>
+  <img src="https://github.com/user-attachments/assets/5047e8aa-7db9-4849-8b52-eca8ccda0209" alt="drawing" width="45%"/>
 </p>
 
 We outsourced the YoloPV2 model from [here](https://github.com/CAIC-AD/YOLOPv2)
@@ -30,7 +30,7 @@ We outsourced the YoloPV2 model from [here](https://github.com/CAIC-AD/YOLOPv2)
 #### Ⓒ Color Gradient Thresholding
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3043d006-36c7-4ac2-8220-9149ca77c0ad" alt="drawing" width="600"/>
+  <img src="https://github.com/user-attachments/assets/3043d006-36c7-4ac2-8220-9149ca77c0ad" alt="drawing" width="45%"/>
 </p>
 
 #### Ⓓ Perspective Transform
@@ -44,7 +44,7 @@ We outsourced the YoloPV2 model from [here](https://github.com/CAIC-AD/YOLOPv2)
 #### Ⓔ Steering Angle
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/4a8ed2a7-d170-43e9-8d80-8c757dab680a" alt="drawing" width="600"/>
+  <img src="https://github.com/user-attachments/assets/4a8ed2a7-d170-43e9-8d80-8c757dab680a" alt="drawing" width="45%"/>
 </p>
 
 ### ② Pedestrian Detection

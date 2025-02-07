@@ -6,7 +6,6 @@ import numpy as np
 import cv2
 import rospy
 
-from line_fit import line_fit, tune_fit, bird_fit, final_viz, get_actual_heading
 from Line import Line
 # from lane.detect import detect
 from sensor_msgs.msg import Image

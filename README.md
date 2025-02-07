@@ -10,7 +10,7 @@ This is a project in which we test out a pipeline which we run using ROS on a GE
 Below shows an image of the pipeline we use to processing our ZED2 Camera output. Once processed, we calculate an approximate steering angle for which the car should turn. 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f196a253-1b0e-440a-a4f0-135c90d55e31" alt="drawing" width="600"/>
+  <img src="https://github.com/user-attachments/assets/1fdfc66e-d266-4b7c-8fc2-adc27915d1ef" alt="drawing" width="600"/>
 </p>
 
 ### ① Bilateral Filter

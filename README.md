@@ -62,7 +62,7 @@ The last step simply finds the angle between the top right most corner and the b
 Below shows the decision tree for how exactly our Lane + Pedestrian Detection Algorithm works
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/442f4d5b-7122-4d80-a11b-5c99bf9501f2" alt="drawing" width="800"/>
+  <img src="https://github.com/user-attachments/assets/442f4d5b-7122-4d80-a11b-5c99bf9501f2" alt="drawing" width="600"/>
 </p>
 
 

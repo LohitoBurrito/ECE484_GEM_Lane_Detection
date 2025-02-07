@@ -15,7 +15,7 @@ Below shows an image of the pipeline we use to processing our ZED2 Camera output
 </p>
 
 #### Ⓐ Bilateral Filter
-The Bilateral Filter acts just like a gaussian filter which is neat for testing in various environmental conditions. Each pixel in the image recieved from the ZED2 camera will utilize neighboring pixels to estimate what the its new pixel value should be, which in turn blurs the image. Any snow or rain droplets that faces the camera will average itself out and blend with the image.
+The Bilateral Filter acts just like a gaussian filter which is neat for filtering in various environmental conditions. Each pixel in the image recieved from the ZED2 camera will utilize neighboring pixels to estimate what its new pixel value should be, which in turn blurs the image. Any snow or rain droplets that faces the camera will average itself out and blend with the image.
 
 #### Ⓑ YoloPV2
 
@@ -44,9 +44,9 @@ With the output of the color thresholding, we can transform our view to help det
   <img src="https://github.com/user-attachments/assets/0fd3ce67-bdd3-445f-add5-7a558ebdc0eb" width="46%" />
 </p>
 
-I will write more tommorow
--------------------------------------------------------------------
 #### Ⓔ Steering Angle
+
+The last step simply finds the angle between the top right most corner and the bottom left most corner of the lane. Depending on the angle, we will be publishing an angle to a ros topic dedicated for changing the wheel angle. Note that the implementation of determining the angle is done within the "front2steer" function. Below shows an example image depicting the angle formed by the corners. 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4a8ed2a7-d170-43e9-8d80-8c757dab680a" alt="drawing" width="45%"/>
@@ -54,10 +54,13 @@ I will write more tommorow
 
 ### ② Pedestrian Detection
 
-Utilizing the output 
+// TODO
 
 ### ③ Decision Tree
-The entirety of the algorithm can be summarized into a single decision tree. 
+
+// TODO
 
 ## Results
+
+// TODO
 

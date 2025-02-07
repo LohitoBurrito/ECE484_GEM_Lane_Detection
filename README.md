@@ -29,11 +29,15 @@ We outsourced the YoloPV2 model from [here](https://github.com/CAIC-AD/YOLOPv2)
 
 #### Ⓒ Color Gradient Thresholding
 
+With the output of the YoloPV2 model, we needed to extract the lanes itself which are marked in red. Therefore, we can filter for red colors using HLS Color Thresholding. Its not enough to filter for Red since the output is transparent and we can see the lanes itself below the red markings as depicted in the YoloPV2 output. I also want to mention that we turned off gradient filtering. Gradient filtering compares 2 pixels side by side to measure a change in the pixel value. If there is high pixel difference, the pixel will be marked. However, we found out that the gradient thresholding did very little to improve the output, so to increase performance, we did not run the gradient thresholding function. The implementation, however, is still within the repository. After performing the thresholding, we produced output image such as below.  
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/3043d006-36c7-4ac2-8220-9149ca77c0ad" alt="drawing" width="45%"/>
 </p>
 
 #### Ⓓ Perspective Transform
+
+With the output of the color thresholding, we can transform our view to help determine our steering angle. In order to do so, we have to undertand how perspectives work. If we look at a straight road, the road itself will look like a trapezoid where the top right corner of the road will be closer to the top left corner of the road compared to the bottom right and bottom left. Therefore, we designed to create our own trapezoid and place it on a the outer lane as shown on the left image below. We then took all of the contents within the trapezoid, and created a 2d top-down view as shown in the image to the right. With this new image, we can determine whether the road is turning left or right.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/2695730b-7837-4f91-b42a-477ecd6ae1a1" width="45%" />

@@ -14,7 +14,7 @@ Below shows an image of the pipeline we use to processing our ZED2 Camera output
 </p>
 
 ### ① Bilateral Filter
-The Bilateral Filter acts just like a gaussian filter which is neat for filtering in various environmental conditions. Each pixel in the image recieved from the ZED2 camera will utilize neighboring pixels to estimate what its new pixel value should be, which in turn blurs the image. Any snow or rain droplets that faces the camera will average itself out and blend with the image.
+The Bilateral Filter acts just like a gaussian filter which is neat for filtering in various environmental conditions. Each pixel in the image recieved from the ZED2 camera from the rgb subscriber will utilize neighboring pixels to estimate what its new pixel value should be, which in turn blurs the image. Any snow or rain droplets that faces the camera will average itself out and blend with the image.
 
 ### ② YoloPV2
 
@@ -26,7 +26,9 @@ The blurred output of the Bilateral Filter is then sent into a YoloPV2 model whi
   <img src="https://github.com/user-attachments/assets/5047e8aa-7db9-4849-8b52-eca8ccda0209" alt="drawing" width="45%"/>
 </p>
 
-Note that with the YoloPV2 model, we can also perform pedestrian detection. We
+Note that with the YoloPV2 model, we can also perform pedestrian detection. We take our lidar measurments from our lidar subscriber topic, and perform a depth mapping on the objects we retrieved. If there is a pedestrian that is detected in front, we will publish values to the acceleration topic to stop the vehicle. 
+
+Click [here](https://drive.google.com/file/d/1pjq8oPXD1aFPnZKNYCzj8fU4euQA-8Hh/view?usp=sharing) to see a demonstration of the pedestrian detection with lidar in action
 
 ### ③ Color Gradient Thresholding
 
@@ -52,6 +54,8 @@ The last step simply finds the angle between the top right most corner and the b
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4a8ed2a7-d170-43e9-8d80-8c757dab680a" alt="drawing" width="45%"/>
 </p>
+
+Click [here](https://drive.google.com/file/d/1-gOBF6FZbwREzLmjqInui9nwMs97lKg-/view?usp=sharing) to see a steering in action
 
 ### ⑥ Decision Tree
 

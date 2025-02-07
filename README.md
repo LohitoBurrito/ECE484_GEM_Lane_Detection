@@ -14,15 +14,24 @@ Below shows an image of the pipeline we use to processing our ZED2 Camera output
   <img src="https://github.com/user-attachments/assets/0b335561-5c45-45ab-98ec-646e10a44860" alt="drawing" width="800"/>
 </p>
 
-Ⓐ Bilateral Filter
+#### Ⓐ Bilateral Filter
+The Bilateral Filter acts just like a gaussian filter which is neat for testing in various environmental conditions. Each pixel in the image recieved from the ZED2 camera will utilize neighboring pixels to estimate what the its new pixel value should be, which in turn blurs the image. Any snow or rain droplets that faces the camera will average itself out and blend with the image.
 
-Ⓑ YoloPV2
+#### Ⓑ YoloPV2
 
-Ⓒ Color Gradient Thresholding
+The blurred output of the Bilateral Filter is then sent into a YoloPV2 model which performs pedestrian and lane detection. Below shows an example output image of the YoloPV2 model which we captured. Note that the image is blurred which was the results of the previous bilateral filter.
 
-Ⓓ Perspective Transform
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5047e8aa-7db9-4849-8b52-eca8ccda0209" alt="drawing" width="600"/>
+</p>
 
-Ⓔ Steering Angle
+We outsourced the YoloPV2 model from [here](https://github.com/CAIC-AD/YOLOPv2)
+
+#### Ⓒ Color Gradient Thresholding
+
+#### Ⓓ Perspective Transform
+
+#### Ⓔ Steering Angle
 
 ### ② Pedestrian Detection
 

@@ -28,7 +28,7 @@ The blurred output of the Bilateral Filter is then sent into a YoloPV2 model whi
 
 Note that with the YoloPV2 model, we can also perform pedestrian detection. We take our lidar measurments from our lidar subscriber topic, and perform a depth mapping on the objects we retrieved. If there is a pedestrian that is detected in front, we will publish values to the acceleration topic to stop the vehicle. 
 
-Click [here](https://drive.google.com/file/d/1pjq8oPXD1aFPnZKNYCzj8fU4euQA-8Hh/view?usp=sharing) to see a demonstration of the pedestrian detection with lidar in action
+⭐ Click [here](https://drive.google.com/file/d/1pjq8oPXD1aFPnZKNYCzj8fU4euQA-8Hh/view?usp=sharing) to see a demonstration of the pedestrian detection with lidar in action
 
 ### ③ Color Gradient Thresholding
 
@@ -55,7 +55,7 @@ The last step simply finds the angle between the top right most corner and the b
   <img src="https://github.com/user-attachments/assets/4a8ed2a7-d170-43e9-8d80-8c757dab680a" alt="drawing" width="45%"/>
 </p>
 
-Click [here](https://drive.google.com/file/d/1-gOBF6FZbwREzLmjqInui9nwMs97lKg-/view?usp=sharing) to see a steering in action
+⭐ Click [here](https://drive.google.com/file/d/1-gOBF6FZbwREzLmjqInui9nwMs97lKg-/view?usp=sharing) to see a steering in action
 
 ### ⑥ Decision Tree
 

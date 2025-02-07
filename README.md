@@ -10,7 +10,7 @@ This is a project in which we test out a pipeline which we run using ROS on a GE
 Below shows an image of the pipeline we use to processing our ZED2 Camera output. Once processed, we calculate an approximate steering angle for which the car should turn. 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/117f8cf3-0065-4eec-8634-9ecd620d109c" alt="drawing" width="600"/>
+  <img src="https://github.com/user-attachments/assets/f196a253-1b0e-440a-a4f0-135c90d55e31" alt="drawing" width="600"/>
 </p>
 
 ### ① Bilateral Filter
@@ -18,13 +18,15 @@ The Bilateral Filter acts just like a gaussian filter which is neat for filterin
 
 ### ② YoloPV2
 
+⚠️ Disclaimer: We outsourced the YoloPV2 model from [here](https://github.com/CAIC-AD/YOLOPv2)
+
 The blurred output of the Bilateral Filter is then sent into a YoloPV2 model which performs pedestrian and lane detection. Below shows an example output image of the YoloPV2 model which we captured. Note that the image is blurred which was the results of the previous bilateral filter.
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/5047e8aa-7db9-4849-8b52-eca8ccda0209" alt="drawing" width="45%"/>
 </p>
 
-We outsourced the YoloPV2 model from [here](https://github.com/CAIC-AD/YOLOPv2)
+Note that with the YoloPV2 model, we can also perform pedestrian detection. We
 
 ### ③ Color Gradient Thresholding
 

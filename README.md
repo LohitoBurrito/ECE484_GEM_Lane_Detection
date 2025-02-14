@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/612c802d-d2c9-436d-bbcd-bfebdacccd81)
+
 # GEM Polaris ECE 484 Team Kachow Report
 
 ⚠️ Disclaimer: You cannot actually run this locally unless you have access to a UIUC ubuntu machine in the ECE 484 classroom. This README file rather shows the results of our project. 

@@ -57,12 +57,4 @@ The last step simply finds the angle between the top right most corner and the b
 
 ⭐ Click [here](https://drive.google.com/file/d/1-gOBF6FZbwREzLmjqInui9nwMs97lKg-/view?usp=sharing) to see a steering in action
 
-### ⑥ Decision Tree
-
-Below shows the decision tree for how exactly our Lane + Pedestrian Detection Algorithm works
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/442f4d5b-7122-4d80-a11b-5c99bf9501f2" alt="drawing" width="600"/>
-</p>
-
 

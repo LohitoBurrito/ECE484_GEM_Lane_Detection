@@ -57,4 +57,13 @@ The last step simply finds the angle between the top right most corner and the b
 
 ⭐ Click [here](https://drive.google.com/file/d/1-gOBF6FZbwREzLmjqInui9nwMs97lKg-/view?usp=sharing) to see a steering in action
 
+## Acknowledgments
+
+This project utilizes **YOLOPv2 (You Only Look Once for Panoptic Driving)**, an advanced deep learning model for multi-task perception in autonomous driving.  
+YOLOPv2 is developed by the original authors and is licensed under the **Apache 2.0 License**.  
+
+- Original YOLOPv2 paper: [https://arxiv.org/abs/2307.10316](https://arxiv.org/abs/2307.10316)  
+- Official GitHub repository: [https://github.com/CAIC-AD/YOLOPv2](https://github.com/CAIC-AD/YOLOPv2)  
+
+We acknowledge and thank the developers of YOLOPv2 for their contributions to the open-source community.
 
